@@ -1,0 +1,12 @@
+.today {
+    color: red;
+    display: inline;
+}
+.tomorrow {
+    color: green;
+    display: inline;
+}
+.later {
+    color: blue;
+    display: inline;
+}

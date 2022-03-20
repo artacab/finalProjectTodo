@@ -1,0 +1,32 @@
+<template>
+  <div class="slds-box">
+        <lightning-layout vertical-align="center">
+                <lightning-layout-item padding="around-small">
+                   <p>Title:<lightning-formatted-text value={todo.Title__c}></lightning-formatted-text></p>
+                   <p>Description:<lightning-formatted-text value={todo.Description__c}></lightning-formatted-text></p>
+                   <p style="display: inline;">Category:</p><div class={colorClass}>{todo.Category__c}</div>
+                   <p>Priority:<lightning-formatted-text value={todo.Priority__c}></lightning-formatted-text></p>
+                   <p>Status:<lightning-formatted-text value={todo.Status__c}></lightning-formatted-text></p>    
+                </lightning-layout-item>
+      </lightning-layout>
+      <div class="slds-p-around_medium lgc-bg">
+        <lightning-button-icon 
+                icon-name="utility:delete"    
+                alternative-text="Delete"  
+                class="slds-m-left_xx-small" 
+                title="Delete"
+                onclick={handleClickDelete}
+                data-recordid={todo.Id}
+        ></lightning-button-icon>
+        <lightning-button-icon 
+                icon-name="utility:edit"      
+                alternative-text="Edit"     
+                class="slds-m-left_xx-small" 
+                onclick={handleClickEdit}
+                title="Edit"
+                data-recordid={todo.Id}
+                >
+        </lightning-button-icon>
+      </div>
+  </div>
+</template>

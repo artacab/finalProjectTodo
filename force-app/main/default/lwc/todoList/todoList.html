@@ -1,0 +1,61 @@
+<template>
+    <lightning-card  title="tODO" icon-name="standard:opportunity">
+        <lightning-button label="New" slot="actions" onclick={createTodoMode}></lightning-button>
+        <div class="slds-box">
+          <lightning-input
+            type="search"
+            onchange={handleKeyChange}
+            class="slds-var-m-bottom_small"
+            label="Search"
+            value={searchKey}
+        ></lightning-input>
+        </div>
+        <div class="slds-var-m-around_medium">
+            <template if:true={todos.data}>
+                <template for:each={todos.data} for:item="todo">
+                    <c-todo-item 
+                        key={todo.Id} 
+                        todo={todo}
+                        onselectdel={deleteTodo}
+                        onselectedit={editTodo}
+                    >
+                    </c-todo-item>
+                </template>
+            </template>
+            <template if:true={todos.error}>
+                <c-error-panel errors={todos.error}></c-error-panel>
+            </template>
+        </div>  
+    </lightning-card>
+
+    <template if:true={isModalOpen}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <template if:true={isCreateMode}>
+                    <div class="slds-modal__content slds-p-around_medium">
+                        <lightning-record-form
+                            object-api-name="Todo__c"
+                            fields={fields}
+                            onsuccess={successCreateTodo}
+                            oncancel={closeModal}>
+                        </lightning-record-form>
+                    </div>
+                </template>
+                <template if:true={isEditMode}>
+                    <div class="slds-modal__content slds-p-around_medium">
+                        <lightning-record-form
+                            record-id={todoIdEdit}
+                            object-api-name="Todo__c"
+                            columns="2"
+                            mode="edit"
+                            fields={fields}
+                            onsuccess={successEditTodo}
+                            oncancel={closeModal}>
+                        </lightning-record-form>
+                </div>
+                </template>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>
