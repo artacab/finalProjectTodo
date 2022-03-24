@@ -1,0 +1,18 @@
+:host {
+    --slds-c-card-color-background: #D9E7DD;
+    --slds-c-badge-color-background: #12A38F ;
+    --slds-c-badge-text-color: #FFFFFF;
+    text-transform: uppercase;
+}
+.desc {
+    display: flex;
+    justify-content: space-between;
+}
+.reverse {
+    cursor: pointer;
+}
+.reverse:hover {
+    --slds-c-badge-color-background: #FFFFFF ;
+    --slds-c-badge-text-color: #12A38F;
+    transition: .7s;
+}

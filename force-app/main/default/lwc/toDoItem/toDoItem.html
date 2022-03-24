@@ -1,0 +1,24 @@
+<template>
+    <article class="slds-card">
+        <div class="slds-card__header slds-grid">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                <div class="slds-media__body desc">
+                        <lightning-badge 
+                            class="reverse" 
+                            label={todo.Name} 
+                            onclick={handleView}
+                        >
+                        </lightning-badge>
+                        <lightning-button-icon 
+                            icon-name="utility:edit" 
+                            class="slds-m-left_xx-small" 
+                            title="Edit" 
+                            onclick={handleEdit}
+                        >
+                        </lightning-button-icon>
+                </div>
+            </header>
+        </div>
+        <div class="slds-card__body slds-card__body_inner">{todo.Description__c}</div>
+    </article>
+</template>
