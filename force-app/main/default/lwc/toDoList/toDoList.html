@@ -1,0 +1,53 @@
+<template>
+    <div class="slds-box slds-box_small manage">
+        <lightning-button 
+            label="New ToDo" 
+            title="Non-primary action" 
+            onclick={showCreateModalWindow}
+        ></lightning-button>
+        <lightning-input
+            id="search"
+            placeholder="Let`s search ToDo!"
+            name="enter-search"
+            type="search"
+            onchange={search}
+        ></lightning-input>
+    </div>
+    <template if:true={showCreateModal}>
+        <c-modal-window-create onclose={closeCreateModalWindow}>
+        </c-modal-window-create>
+    </template>
+    <template if:true={showEditModal}>
+        <c-modal-window-edit 
+            todo={todo} 
+            onclose={closeEditModalWindow}
+            onassigntome={handleAssignToMe}
+            onassigntotoday={handleAssignToToday}
+            onassigntotomorrow={handleAssignToTomorrow}
+            onassigntolater={handleAssignToLater}
+            ondelete={handleDelete}
+            onupdate={update}>
+        </c-modal-window-edit>
+    </template>
+    <template if:true={showViewModal}>
+        <c-modal-window-view todo={todo} onclose={closeViewModalWindow}>
+
+        </c-modal-window-view>
+    </template>
+    <div class="wrapper">
+        <template if:true={todos}>
+            <div class="list-views">
+                <c-to-do-view name="My Todos" todos={filteredMyTodos} onedit={handleEdit} onview={handleView}>
+                </c-to-do-view>
+                <c-to-do-view name="Today Todos" todos={filteredTodayTodos} onedit={handleEdit} onview={handleView}>
+                </c-to-do-view>
+                <c-to-do-view name="Tomorrow Todos" todos={filteredTomorrowTodos} onedit={handleEdit} onview={handleView}> 
+                </c-to-do-view>
+                <c-to-do-view name="Later Todos" todos={filteredLaterTodos} onedit={handleEdit} onview={handleView}>
+                </c-to-do-view>
+                <c-to-do-view name="Done Todos" todos={filteredDoneTodos} onedit={handleEdit} onview={handleView}>
+                </c-to-do-view>
+            </div>
+        </template>
+    </div>
+</template>

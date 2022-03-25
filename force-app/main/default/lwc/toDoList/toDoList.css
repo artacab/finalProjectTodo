@@ -1,0 +1,15 @@
+.wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.list-views{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+c-to-do-view{
+    width:19%;
+}

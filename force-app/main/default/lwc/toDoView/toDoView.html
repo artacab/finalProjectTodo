@@ -1,0 +1,13 @@
+<template>
+    <div class="slds-col wrapper-card">
+        <div class="slds-card">
+            <div class="slds-card__header">
+                <div class="title">{name}</div>
+            </div>
+        </div>
+        <template for:each={todos} for:item="todo">
+            <c-to-do-item key={todo.Id} todo={todo} onedit={handleEdit} onview={handleView}>
+            </c-to-do-item>
+        </template>
+    </div>
+</template>
