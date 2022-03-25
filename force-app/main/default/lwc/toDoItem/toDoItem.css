@@ -2,7 +2,7 @@
     --slds-c-card-color-background: #D9E7DD;
     --slds-c-badge-color-background: #12A38F ;
     --slds-c-badge-text-color: #FFFFFF;
-    text-transform: uppercase;
+    --slds-c-badge-text-transform: uppercase;
 }
 .desc {
     display: flex;
