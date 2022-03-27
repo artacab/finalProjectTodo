@@ -1,6 +1,6 @@
 import { LightningElement, api } from 'lwc';
 
-export default class ToDoColumn extends LightningElement {
+export default class ToDoView extends LightningElement {
 
     @api name;
     @api todos;
