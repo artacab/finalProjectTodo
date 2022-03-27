@@ -8,6 +8,20 @@
     display: flex;
     justify-content: space-between;
 }
+
+.today {
+    color: red;
+    display: inline;
+}
+.tomorrow {
+    color: green;
+    display: inline;
+}
+.later {
+    color: blue;
+    display: inline;
+}
+
 .reverse {
     cursor: pointer;
 }

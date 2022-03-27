@@ -4,6 +4,11 @@ export default class ToDoItem extends LightningElement {
 
     @api todo;
 
+    get colorClass(){
+        return `${this.todo.Category__c.toLowerCase()}`
+      }
+    
+
     handleEdit(event){
         this.dispatchEvent(new CustomEvent('edit', {detail: this.todo}));
     }
