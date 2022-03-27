@@ -1,0 +1,66 @@
+<template>
+  <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+    aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+    <div class="slds-modal__container">
+      <header class="slds-modal__header">
+        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+          <lightning-icon icon-name="utility:close" alternative-text="Close" onclick={closeModal}></lightning-icon>
+        </button>
+        <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Edit ToDo</h2>
+      </header>
+      <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+
+        <lightning-record-form object-api-name="ToDo__c" fields={fields} record-id={todo.Id} mode="edit">
+        </lightning-record-form>
+        <div class="assignment">
+          <lightning-badge label="Assign to" class="slds-badge_inverse"></lightning-badge>
+          <lightning-button-group>
+            <lightning-button label="Me" onclick={assignToMe}></lightning-button>
+            <lightning-button label="Today" onclick={assignToToday}></lightning-button>
+            <lightning-button label="Tomorrow" onclick={assignToTomorrow}></lightning-button>
+            <lightning-button label="Later" onclick={assignToLater}></lightning-button>
+          </lightning-button-group>
+        </div>
+
+        <template if:true={todo.Sub_ToDos__r}>
+          
+          <div class="subtodos-header">
+            SubToDos
+          </div>
+
+          <template for:each={todo.Sub_ToDos__r} for:item="SubToDo">
+            <lightning-record-form key={SubToDo.Id} object-api-name="Sub_ToDo__c" fields={fieldsSub}
+              record-id={SubToDo.Id} columns="3" mode="view">
+
+            </lightning-record-form>
+            <lightning-button-icon 
+              icon-name="utility:delete" 
+              key={SubToDo.Id} 
+              data-item={SubToDo.Id} 
+              onclick={deleteSubTodo} 
+              class="slds-m-left_xx-small" 
+              title="Delete"
+            ></lightning-button-icon>
+          </template>
+        </template>
+
+        <div class="add-btn">
+          <lightning-button variant="brand-outline" label="Add SubToDo" onclick={handleAddSubTodo}></lightning-button>
+        </div>
+
+        <template if:true={isAdding}>
+          <lightning-record-edit-form object-api-name="Sub_ToDo__c" fields={fieldsSub} onsubmit={createSubToDo}>
+            <lightning-input-field field-name="Status__c"></lightning-input-field>
+            <lightning-input-field field-name="Name"></lightning-input-field>
+            <lightning-button variant="brand" label="Create SubToDo" type="submit"></lightning-button>
+          </lightning-record-edit-form>
+        </template>
+
+        <div class="delete-btn">
+          <lightning-button variant="destructive" label="Delete ToDo" onclick={handleDelete}></lightning-button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="slds-backdrop slds-backdrop_open"></div>
+</template>

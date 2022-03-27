@@ -1,0 +1,52 @@
+<template>
+  <template if:true={recordTypeIdVal}>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+      aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+      <div class="slds-modal__container">
+        <header class="slds-modal__header">
+          <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+            <lightning-icon icon-name="utility:close" alternative-text="Close" onclick={closeModal}></lightning-icon>
+          </button>
+          <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Create ToDo</h2>
+        </header>
+        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+          <lightning-record-form object-api-name="ToDo__c" record-type-id={recordTypeIdVal} fields={fields}
+            onsubmit={handleSubmit}>
+          </lightning-record-form>
+        </div>
+      </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+  </template>
+
+  <template if:true={objectInfo.data}>
+    <template if:true={isRTModalOpen}>
+      <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+        aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+          <header class="slds-modal__header">
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+              <lightning-icon icon-name="utility:close" alternative-text="Close" onclick={closeRTModal}>
+              </lightning-icon>
+            </button>
+            <h2 class="slds-modal__title slds-hyphenate">Select ToDo record type</h2>
+          </header>
+          <div class="slds-modal__content slds-p-around_medium">
+            <div class="helper">
+              <lightning-combobox name="recordType" label="" placeholder="Choose ToDo record type" value={value}
+                options={recordTypeId} onchange={changeHandler}>
+              </lightning-combobox>
+            </div>
+            <lightning-button-group>
+              <lightning-button class="slds-button" label="Cancel" onclick={closeRTModal}>
+              </lightning-button>
+              <lightning-button variant="brand" class="slds-button" onclick={handleChange} label="Next">
+              </lightning-button>
+            </lightning-button-group>
+          </div>
+        </div>
+      </section>
+      <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+  </template>
+</template>
