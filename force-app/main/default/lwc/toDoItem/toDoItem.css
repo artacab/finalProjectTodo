@@ -9,15 +9,15 @@
     justify-content: space-between;
 }
 
-.today {
+.Today {
     color: red;
     display: inline;
 }
-.tomorrow {
+.Tomorrow {
     color: green;
     display: inline;
 }
-.later {
+.Later {
     color: blue;
     display: inline;
 }

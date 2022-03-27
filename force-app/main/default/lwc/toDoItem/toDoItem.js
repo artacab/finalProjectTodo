@@ -5,7 +5,7 @@ export default class ToDoItem extends LightningElement {
     @api todo;
 
     get colorClass(){
-        return `${this.todo.Category__c.toLowerCase()}`
+        return `${this.todo.Category__c}`
       }
     
 
