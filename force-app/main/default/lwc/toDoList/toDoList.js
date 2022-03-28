@@ -122,7 +122,8 @@ export default class ToDoList extends LightningElement {
     async handleAssignToToday(event){
         let fields = {
             Id: event.detail,
-            OwnerId: this.TodayId.data
+            OwnerId: this.TodayId.data,
+            Category__c: 'Today'
         }
         const recordInput = { fields };
 
@@ -134,7 +135,8 @@ export default class ToDoList extends LightningElement {
     async handleAssignToTomorrow(event){
         let fields = {
             Id: event.detail,
-            OwnerId: this.TomorrowId.data
+            OwnerId: this.TomorrowId.data,
+            Category__c: 'Tomorrow'
         }
         const recordInput = { fields };
 
@@ -146,7 +148,8 @@ export default class ToDoList extends LightningElement {
     async handleAssignToLater(event){
         let fields = {
             Id: event.detail,
-            OwnerId: this.LaterId.data
+            OwnerId: this.LaterId.data,
+            Category__c: 'Later'
         }
         const recordInput = { fields };
 
