@@ -1,5 +1,8 @@
 import { LightningElement, track, wire } from 'lwc';
 import getToDos from '@salesforce/apex/ToDoController.getToDos';
+import getTodayId from '@salesforce/apex/ToDoController.getTodayId';
+import getTomorrowId from '@salesforce/apex/ToDoController.getTomorrowId';
+import getLaterId from '@salesforce/apex/ToDoController.getLaterId';
 import Id from '@salesforce/user/Id';
 import { refreshApex } from '@salesforce/apex';
 import {updateRecord, deleteRecord, getRecord} from 'lightning/uiRecordApi';
@@ -7,15 +10,17 @@ import {updateRecord, deleteRecord, getRecord} from 'lightning/uiRecordApi';
 
 export default class ToDoList extends LightningElement {
 
-    TodayId = "00G5j0000010so8EAA";
-    TomorrowId = "00G5j0000010so9EAA";
-    LaterId = "00G5j0000010so7EAA";
+    @wire(getTodayId)
+    TodayId 
+    @wire(getTomorrowId)
+    TomorrowId
+    @wire(getLaterId)
+    LaterId
     todo;
-
     showCreateModal = false;
     showEditModal = false;
     showViewModal = false;
-
+    
     isSearching = false;
 
     @track searchingTodos;
@@ -34,33 +39,32 @@ export default class ToDoList extends LightningElement {
         }
     }
     get filteredTodayTodos() {
-
         if(this.isSearching){
-            return this.searchingTodos.filter(item => item.OwnerId == this.TodayId);
+            return this.searchingTodos.filter(item => item.OwnerId == this.TodayId.data);
         }
 
         if(this.todos.data){
-            return this.todos.data.filter(item => item.OwnerId == this.TodayId);
+            return this.todos.data.filter(item => item.OwnerId == this.TodayId.data);
         }
     }
     get filteredTomorrowTodos() {
 
         if(this.isSearching){
-            return this.searchingTodos.filter(item => item.OwnerId == this.TomorrowId);
+            return this.searchingTodos.filter(item => item.OwnerId == this.TomorrowId.data);
         }
 
         if(this.todos.data){
-            return this.todos.data.filter(item => item.OwnerId == this.TomorrowId);
+            return this.todos.data.filter(item => item.OwnerId == this.TomorrowId.data);
         }
     }
     get filteredLaterTodos() {
 
         if(this.isSearching){
-            return this.searchingTodos.filter(item => item.OwnerId == this.LaterId);
+            return this.searchingTodos.filter(item => item.OwnerId == this.LaterId.data);
         }
 
         if(this.todos.data){
-            return this.todos.data.filter(item => item.OwnerId == this.LaterId);
+            return this.todos.data.filter(item => item.OwnerId == this.LaterId.data);
         }
     }
     get filteredDoneTodos() {
@@ -118,7 +122,7 @@ export default class ToDoList extends LightningElement {
     async handleAssignToToday(event){
         let fields = {
             Id: event.detail,
-            OwnerId: this.TodayId
+            OwnerId: this.TodayId.data
         }
         const recordInput = { fields };
 
@@ -130,7 +134,7 @@ export default class ToDoList extends LightningElement {
     async handleAssignToTomorrow(event){
         let fields = {
             Id: event.detail,
-            OwnerId: this.TomorrowId
+            OwnerId: this.TomorrowId.data
         }
         const recordInput = { fields };
 
@@ -142,7 +146,7 @@ export default class ToDoList extends LightningElement {
     async handleAssignToLater(event){
         let fields = {
             Id: event.detail,
-            OwnerId: this.LaterId
+            OwnerId: this.LaterId.data
         }
         const recordInput = { fields };
 
