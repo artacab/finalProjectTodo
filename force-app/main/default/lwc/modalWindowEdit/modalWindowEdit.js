@@ -27,8 +27,8 @@ export default class ModalWindowEdit extends LightningElement {
     ];
 
     fieldsSub = [
-        SUB_STATUS_FIELD,
-        SUB_NAME_FIELD
+        SUB_NAME_FIELD,
+        SUB_STATUS_FIELD
     ];
 
     isAdding = false;
@@ -71,8 +71,8 @@ export default class ModalWindowEdit extends LightningElement {
     async createSubToDo(event){
         event.preventDefault();
         let fields = {
-                        'Status__c': event.detail.fields.Status__c,
                         'Name': event.detail.fields.Name,
+                        'Status__c': event.detail.fields.Status__c,
                         'ToDo__c': this.todo.Id
                     };
 

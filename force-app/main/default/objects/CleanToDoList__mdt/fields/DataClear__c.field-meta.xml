@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DataClear__c</fullName>
+    <defaultValue>TODAY()-90</defaultValue>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>DataClear</label>
+    <required>false</required>
+    <type>Date</type>
+</CustomField>
