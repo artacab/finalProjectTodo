@@ -25,7 +25,7 @@ global with sharing class ToDoReceiver {
             Description__c = (String)todoAdd.get('description'),
             Category__c = (String)todoAdd.get('category'),
             Priority__c = (String)todoAdd.get('priority'),
-            Status__c = (Boolean)todoAdd.get('status'),
+            Status__c = (String)todoAdd.get('status'),
             RecordTypeId = recType.Id,
             ExternalId__c = (String)todoAdd.get('id'))
             );
@@ -66,7 +66,7 @@ global with sharing class ToDoReceiver {
             	Description__c = (String)todoAdd.get('description'),
             	Category__c = (String)todoAdd.get('category'),
             	Priority__c = (String)todoAdd.get('priority'),
-                Status__c = (Boolean)todoAdd.get('status'),
+                Status__c = (String)todoAdd.get('status'),
                 RecordTypeId = recType.Id,
             	ExternalId__c = (String)todoAdd.get('externalId'))
             );
@@ -76,7 +76,7 @@ global with sharing class ToDoReceiver {
             	Description__c = (String)todoAdd.get('description'),
             	Category__c = (String)todoAdd.get('category'),
             	Priority__c = (String)todoAdd.get('priority'),
-                Status__c = (Boolean)todoAdd.get('status'),
+                Status__c = (String)todoAdd.get('status'),
                 RecordTypeId = recType.Id,
                 ExternalId__c = (String)todoAdd.get('id'))
             );
@@ -130,7 +130,7 @@ global with sharing class ToDoReceiver {
             	Description__c = (String)todoAdd.get('description'),
             	Category__c = (String)todoAdd.get('category'),
             	Priority__c = (String)todoAdd.get('priority'),
-                Status__c = (Boolean)todoAdd.get('status'),
+                Status__c = (String)todoAdd.get('status'),
                 RecordTypeId = recType.Id,
             	ExternalId__c = (String)todoAdd.get('externalId'))
             );
@@ -140,7 +140,7 @@ global with sharing class ToDoReceiver {
             	Description__c = (String)todoAdd.get('description'),
             	Category__c = (String)todoAdd.get('category'),
             	Priority__c = (String)todoAdd.get('priority'),
-                Status__c = (Boolean)todoAdd.get('status'),
+                Status__c = (String)todoAdd.get('status'),
                 RecordTypeId = recType.Id,
                 ExternalId__c = (String)todoAdd.get('id'))
             );

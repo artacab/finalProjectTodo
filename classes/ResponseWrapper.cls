@@ -5,7 +5,7 @@ public with sharing class ResponseWrapper {
     public Date creationDate { get; set; }
     public String category { get; set; }
     public String priority { get; set; }
-    public Boolean status { get; set; }
+    public String status { get; set; }
     public String externalId { get; set; }
     public String rectypeName {get; set;}
 
