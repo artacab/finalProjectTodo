@@ -1,7 +1,8 @@
 public with sharing class ResponseWrapperSub {
+
     public String id { get; set; }
     public String name { get; set; }
-    public Boolean status { get; set; }
+    public String status { get; set; }
     public String relatedTodo { get; set; }
     public String relatedExternal { get; set; }
     public String externalId { get; set; }

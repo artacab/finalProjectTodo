@@ -3,7 +3,7 @@ public with sharing class TodoBatchHelper {
     public static Http http = new Http();
     public static HttpRequest request;
     public static HTTPResponse response;
-    public static final String URL_TODO = 'callout:ToDoIntegration/services/apexrest/ToDo__c';
+    public static final String URL_TODO = 'callout:TestConAppAPI/services/apexrest/ToDo__c';
 
     public static void doRequest(String contentBody, String httpMethod) {
         request = new HttpRequest();

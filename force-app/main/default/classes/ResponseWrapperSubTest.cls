@@ -1,10 +1,11 @@
 @IsTest
 private class ResponseWrapperSubTest {
+    
     public static Sub_ToDo__c sub = new Sub_ToDo__c(
-        Id = 'a010900000obuFnAAI',
-        Name = 'Test01',
-        Status__c = false,
-        ToDo__c = 'a0009000007RU4WAAW'
+        Id = 'a035j000005kvdJAAQ',
+        Name = 'Sub01',
+        Status__c = 'Ready to Take',
+        ToDo__c = 'a025j000005ljVmAAI'
     );
 
     @IsTest

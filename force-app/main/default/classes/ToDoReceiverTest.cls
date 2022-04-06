@@ -24,7 +24,7 @@ private class ToDoReceiverTest {
     static void testCreateTodo() {
         RestRequest request = new RestRequest();
         request.requestBody = Blob.valueOf(
-            '[ { "category" : "Today", "name" : "Test01", "id" : "a010900000nVG0NAAW", "rectypeName" : "Today", "status":false } ]'
+            '[ { "category" : "Today", "name" : "Test01", "id" : "a010900000nVG0NAAW", "rectypeName" : "Today", "status":"Ready to take" } ]'
             );
         RestContext.request = request;
         List<Id> ids = ToDoReceiver.createTodo();
@@ -41,7 +41,7 @@ private class ToDoReceiverTest {
         System.assertEquals(todo.Name, 'Test01');
         RestRequest request = new RestRequest();
         request.requestBody = Blob.valueOf(
-            '[{"name": "Test001", "rectypeName" : "Today", "status":false, "id":"' + todo.ExternalId__c + '"}]'
+            '[{"name": "Test001", "rectypeName" : "Today", "status":"Ready to take", "id":"' + todo.ExternalId__c + '"}]'
         );
         RestContext.request = request;
         List<Id> ids = ToDoReceiver.updateTodo();
@@ -56,7 +56,7 @@ private class ToDoReceiverTest {
         System.assertEquals(todo.Name, 'Test02');
         request = new RestRequest();
         request.requestBody = Blob.valueOf(
-            '[{"name": "Test002", "rectypeName" : "Tomorrow", "status":false, "id":"' + todo.Id + '"}]'
+            '[{"name": "Test002", "rectypeName" : "Tomorrow", "status":"Ready to take", "id":"' + todo.Id + '"}]'
         );
         RestContext.request = request;
         ids = ToDoReceiver.updateTodo();
@@ -73,7 +73,7 @@ private class ToDoReceiverTest {
         System.assert(todo != null);
         System.assertEquals(todo.Name, 'Test01');
         RestRequest request = new RestRequest();
-        request.requestBody = Blob.valueOf('[{"name": "Test01", "rectypeName" : "Later", "status":false, "id":"' + todo.ExternalId__c + '"}]');
+        request.requestBody = Blob.valueOf('[{"name": "Test01", "rectypeName" : "Later", "status":"Ready to take", "id":"' + todo.ExternalId__c + '"}]');
         RestContext.request = request;
         List<ToDo__c> todos = [SELECT Id FROM ToDo__c];
         System.assert(todos.size() == 1);

@@ -12,6 +12,7 @@ private class CleanOldTodoTest {
         Test.startTest();
         CleanOldTodo batch = new CleanOldTodo();
         Id batchId = Database.executeBatch(batch);
+        
         Test.stopTest();
         List<ToDo__c> oldTodos = [SELECT Id FROM ToDo__c WHERE CreatedDate = LAST_90_DAYS];
         System.assertEquals(0, oldTodos.size());

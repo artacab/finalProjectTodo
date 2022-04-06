@@ -1,10 +1,10 @@
 @IsTest
 private class ResponseWrapperTest {
     public static ToDo__c todo = new ToDo__c(
-        Id = 'a0009000007RU4WAAW',
+        Id = 'a025j000005ljVmAAI',
         Name = 'Test01',
-        ExternalId__c = 'a010900000nVG0NAAW',
-        RecordTypeId = '012090000006M9QAAU',
+        ExternalId__c = 'a028c00000Xbqk3AAB',
+        RecordTypeId = '0125j000000MwLOAA0',
         Status__c = 'Ready to take'
     );
 
