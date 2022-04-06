@@ -12,16 +12,16 @@
 
         <lightning-record-form object-api-name="ToDo__c" fields={fields} record-id={todo.Id} mode="edit">
         </lightning-record-form>
-        <div class="assignment">
-          <lightning-badge label="Assign to" class="slds-badge_inverse"></lightning-badge>
-          <lightning-button-group>
-            <lightning-button label="Me" onclick={assignToMe}></lightning-button>
-            <lightning-button label="Today" onclick={assignToToday}></lightning-button>
-            <lightning-button label="Tomorrow" onclick={assignToTomorrow}></lightning-button>
-            <lightning-button label="Later" onclick={assignToLater}></lightning-button>
-          </lightning-button-group>
-        </div>
-
+      
+          <div class="assignment">
+            <lightning-badge label="Assign to" class="slds-badge_inverse"></lightning-badge>
+            <lightning-button-group>
+              <lightning-button label="Me" onclick={assignToMe}></lightning-button>
+              <lightning-button label="Today" onclick={assignToToday}></lightning-button>
+              <lightning-button label="Tomorrow" onclick={assignToTomorrow}></lightning-button>
+              <lightning-button label="Later" onclick={assignToLater}></lightning-button>
+            </lightning-button-group>
+          </div>
         <template if:true={todo.Sub_ToDos__r}>
           
           <div class="subtodos-header">

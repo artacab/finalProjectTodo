@@ -31,11 +31,11 @@ export default class ToDoList extends LightningElement {
     get filteredMyTodos() {
 
         if(this.isSearching){
-            return this.searchingTodos.filter(item => item.OwnerId == Id && item.Status__c == false);
+            return this.searchingTodos.filter(item => item.OwnerId == Id && item.Status__c == 'in Progress');
         }
 
         if(this.todos.data){
-            return this.todos.data.filter(item => item.OwnerId == Id && item.Status__c == false);
+            return this.todos.data.filter(item => item.OwnerId == Id && item.Status__c == 'in Progress');
         }
     }
     get filteredTodayTodos() {
@@ -70,11 +70,11 @@ export default class ToDoList extends LightningElement {
     get filteredDoneTodos() {
 
         if(this.isSearching){
-            return this.searchingTodos.filter(item => item.OwnerId == Id && item.Status__c == true);
+            return this.searchingTodos.filter(item => item.OwnerId == Id && item.Status__c == 'Done');
         }
 
         if(this.todos.data){
-            return this.todos.data.filter(item => item.OwnerId == Id && item.Status__c == true);
+            return this.todos.data.filter(item => item.OwnerId == Id && item.Status__c == 'Done');
         }
     }
 
@@ -110,7 +110,8 @@ export default class ToDoList extends LightningElement {
     async handleAssignToMe(event){
         let fields = {
             Id: event.detail,
-            OwnerId: Id
+            OwnerId: Id,
+            Status__c: 'in Progress'
         }
         const recordInput = { fields };
 

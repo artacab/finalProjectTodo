@@ -1,0 +1,8 @@
+{
+  "attributes" : {
+    "type" : "ToDo__c",
+    "url" : "/services/data/v51.0/Sobjects/ToDo__c/a0009000007RU4WAAW"
+  },
+  "Id" : "a0009000007RU4WAAW",
+  "Name" : "Test 0001"
+}
